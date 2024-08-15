@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     const { data } = supabase.auth.onAuthStateChange(async (event, session) => {
       setSession(session);
       setUser(session ? session.user : null);
-      setInitialized(true);
+      setInitialized(true); //auth status check that turns true if auth is completed by the time app is ready to use
     });
     return () => {
       data.subscription.unsubscribe();
